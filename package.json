@@ -1,0 +1,22 @@
+{
+  "name": "strategictradingroom",
+  "version": "1.0.0",
+  "description": "Piattaforma di rendiconto trading multi-utente con autenticazione",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "migrate": "node server/migrate.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-pg-simple": "^9.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "express-rate-limit": "^7.2.0",
+    "pg": "^8.11.5"
+  }
+}
