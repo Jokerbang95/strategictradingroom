@@ -5381,6 +5381,17 @@ async function loadAllData(){
 (async function init(){
   setupAuthScreen();
   window.addEventListener('scroll', hideDayCardOnScroll, {passive:true});
+
+  // tentativo "al meglio" di chiudere la sessione anche solo chiudendo questa
+  // scheda (non garantito al 100% su tutti i browser — la garanzia vera è
+  // la chiusura automatica quando si chiude l'intero browser, gestita lato
+  // server con il cookie di sessione senza scadenza fissa)
+  window.addEventListener('pagehide', ()=>{
+    if(CURRENT_USER){
+      navigator.sendBeacon('/api/logout');
+    }
+  });
+
   try{
     const res = await fetch('/api/me', { credentials:'same-origin' });
     const data = await res.json();

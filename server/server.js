@@ -24,7 +24,10 @@ app.use(session({
     httpOnly: true,
     secure: isProd,          // cookie via HTTPS in produzione
     sameSite: 'lax',
-    maxAge: 30 * 24 * 3600 * 1000, // 30 giorni
+    // NESSUN maxAge: è un "session cookie" — il browser lo cancella da solo
+    // quando l'intero browser viene chiuso, senza bisogno di specificare una
+    // durata. Riaprendo il link dopo aver chiuso il browser, la sessione non
+    // c'è più e si torna sempre alla schermata di login.
   },
 }));
 
